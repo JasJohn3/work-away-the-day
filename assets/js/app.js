@@ -25,31 +25,31 @@ setInterval(function(){}, 1000);
 $(document).ready(function(){
   $(".input-group").on("blur", "textarea", function(){
 
-      var element = $(this);
+      let element = $(this);
       let text = element.val();
       let id = element.id;
       console.log(id);
 
-      var eventP = $("<p>").addClass("form-control").attr('id', id).val(text);
+      let eventP = $("<p>").addClass("form-control").attr('id', id).val(text);
       
       
       $(this).replaceWith(eventP);
   });
 
 $(".list-group").on("click", "p", function() {
-  var text = $(this)
+  let text = $(this)
     .text()
     .trim();
-  var textInput = $("<textarea>").addClass("form-control").val(text);
+  let textInput = $("<textarea>").addClass("form-control").val(text);
   $(this).replaceWith(textInput);
   textInput.trigger("focus");
 });
 
 
 $(".list-group").on("blur", "textarea", function() {
-  var text = $(this).val();
-  var taskP = $("<p>")
-    .addClass("m-1")
+  let text = $(this).val();
+  let taskP = $("<p>")
+    .addClass("form-control")
     .text(text);
   $(this).replaceWith(taskP);
 });
