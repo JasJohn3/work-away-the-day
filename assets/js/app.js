@@ -20,35 +20,52 @@ function loadSaved(){
 
 }
 function hourCheck(){
-
+setInterval(function(){}, 1000);
 }
 $(document).ready(function(){
-  $(".input-group").on("click", "p", function(){
-      // get current text of p element
-  var text = $(this)
-  .text()
-  .trim();
-  var id = text.id;
+  $(".input-group").on("blur", "textarea", function(){
 
-  // replace p element with a new textarea
-  var textInput = $("<textarea>").addClass("form-control").attr('id', id).val(text);
-  $(this).replaceWith(textInput);
+      var element = $(this);
+      let text = element.val();
+      let id = element.id;
+      console.log(id);
 
-  // auto focus new element
-  textInput.trigger("focus");
+      var eventP = $("<p>").addClass("form-control").attr('id', id).val(text);
+      
+      
+      $(this).replaceWith(eventP);
   });
 
+$(".list-group").on("click", "p", function() {
+
+  var text = $(this)
+    .text()
+    .trim();
+
+
+  var textInput = $("<textarea>").addClass("form-control").val(text);
+  $(this).replaceWith(textInput);
+
+
+  textInput.trigger("focus");
+});
+
+
+$(".list-group").on("blur", "textarea", function() {
+
+  var text = $(this).val();
+
+
+
+  var taskP = $("<p>")
+    .addClass("m-1")
+    .text(text);
+
+
+  $(this).replaceWith(taskP);
+});
   $(".input-group").on("click", "button", function(){
-        // get current value of textarea
-        var text = $(this).closest('textarea').val();
-        var id = $(this).closest('textarea').id;
-        console.log(text);
-        console.log(id);
-        // recreate p element
-        var eventP = $("<p>").addClass("form-control").attr('id', id).val(text);
-      
-        // replace textarea with new content
-        // $(this).replaceWith(eventP);
+
 
   })
 drawDate();
